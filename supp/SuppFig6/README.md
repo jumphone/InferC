@@ -1,0 +1,1 @@
+High-resolution figures
