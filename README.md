@@ -1,5 +1,6 @@
 <img src="https://fzhang.bioinfo-lab.com/img/INFERC_LOGO.png" width="250">
-# InferC
+
+**InferC: inferring the chromatin structure and developmental potential of cells using single-cell chromatin accessibility**, ***coming soon***
 
 ### Instruction:
 
