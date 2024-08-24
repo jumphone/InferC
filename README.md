@@ -8,7 +8,7 @@ This tool is designed for inferring the chromatin interaction strength and devel
 
 # Updates:
 
-**2024.08.25, v1.0.0 - Paper version.** The details of this version is described in our paper.
+**2024.08.25, v1.0.0 - Paper version.** details about this version is described in our paper.
 
 </br>
 
