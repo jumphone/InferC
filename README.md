@@ -1,3 +1,4 @@
+<img src="https://fzhang.bioinfo-lab.com/img/INFERC_LOGO.png" width="250">
 # InferC
 
 ### Instruction:
