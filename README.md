@@ -24,10 +24,11 @@ This tool is designed for inferring the chromatin interaction strength and devel
 # Requirements:
 
     R: 4.2.0
-    Seurat: v4
-    Signac: 
-    Cicero: 
-
+    Seurat: 4.3.0
+    Signac: 1.9.0
+    Cicero: 1.16.1
+    bigWigAverageOverBed: download from UCSC Genome Browser
+    
 </br>
     
 # Usage:
@@ -36,6 +37,8 @@ This tool is designed for inferring the chromatin interaction strength and devel
 </br>
 
 # Benchmark datasets:
+
+Original Data: **Supplementary Table 1**
 
 Processed Data: [BaiduNetdisk](https://pan.baidu.com/s/11o2fzAkUmNuIKMg0sk8KYg?pwd=34q2)
 
