@@ -179,9 +179,9 @@ This tool is designed for inferring the chromatin interaction strength and devel
 
 # Benchmark datasets:
 
-Raw data: please check **Supplementary Table 1** in our paper
+**Raw data**: please check **Supplementary Table 1** in our paper
 
-Processed data: [BaiduNetdisk](https://pan.baidu.com/s/11o2fzAkUmNuIKMg0sk8KYg?pwd=34q2)
+**Processed data**: [BaiduNetdisk](https://pan.baidu.com/s/11o2fzAkUmNuIKMg0sk8KYg?pwd=34q2)
 
 </br>
 
