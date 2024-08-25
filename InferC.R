@@ -2073,6 +2073,54 @@ inferc.inferLoopSignal<-function(mat, net, r=0,sep='.And.'){
     }
 
 
+###############################
+# Developmental Score
+############################
+inferc.calDevScore<-function(conns, MAT, PHYLOP){
+    library(stringr)
+    conns=conns 
+    MAT=MAT
+    PHYLOP=PHYLOP
+    #################################
+    conns[,1]=as.character(conns[,1])
+    conns[,2]=as.character(conns[,2])
+    rownames(PHYLOP)=PHYLOP[,1]
+    PHYLOP_=PHYLOP
+    rownames(PHYLOP_)=stringr::str_replace_all(PHYLOP[,1],'-','_')
+    PP_=rank(PHYLOP_[,6],ties.method='average')
+    names(PP_)=rownames(PHYLOP_)
+    ####################
+    conns_used=conns
+    R1=rank(conns_used[,3],ties.method='average')
+    R2=rank(PP_[conns_used[,1]]+PP_[conns_used[,2]],ties.method='average')
+    RR=R1+R2
+    this_cut=sort(RR,decreasing=T)[100000*2]
+    #################
+    used_index=which(RR>=this_cut)
+    conns_used=conns[used_index,]
+    print(dim(conns_used))
+    conns_uniq=inferloop.getUniqLoop(conns_used)
+    #################
+    NET=apply(conns_uniq[,c(1,2)],2,stringr::str_replace_all,'_','-')
+    PEAK_USED=c(NET[,1],NET[,2])
+    MAT=MAT[which(rownames(MAT) %in% PEAK_USED),]
+    ###################
+    infercOut = inferc.calLoopScore(MAT, NET)
+    LLS=infercOut$lls
+    GLS=infercOut$gls
+    ####################
+    LOOP=inferloop.splitLoop(rownames(LLS))
+    P1=PHYLOP[LOOP[,1],6]
+    P2=PHYLOP[LOOP[,2],6]
+    ####################
+    absLLS=abs(LLS)
+    A=absLLS*P1*P2
+    B=absLLS*(abs(P1)+abs(P2))
+    C=colSums(A)/colSums(B)
+    ###############
+    devScore=C
+    return(devScore)
+    }
 
 
 ######################################################################################
