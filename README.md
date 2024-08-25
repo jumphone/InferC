@@ -44,6 +44,28 @@ This tool is designed for inferring the chromatin interaction strength and devel
     source('InferC.R')
     
     atac_count=readRDS('peak_count_matrix.rds')
+    
+    ########################################################################
+    # You can use "fragment.tar.gz" and "peak.bed" to generate atac_count
+    bpath='peak.bed'
+    fpath='fragment.tar.gz'
+    TMP=read.table(bpath,sep='\t',header=F,row.names=NULL)
+    PEAK=GRanges(seqnames = TMP$V1,
+            ranges = IRanges(start = TMP$V2+1,
+                             end = TMP$V3,
+                             names = paste0('peak',c(1:nrow(TMP)))
+                             ))
+    fragments <- CreateFragmentObject(fpath,validate.fragments=FALSE)  
+    atac_count=FeatureMatrix(
+      fragments,
+      features=PEAK,
+      cells = NULL,
+      process_n = 2000,
+      sep = c(":", "-"),
+      verbose = TRUE
+      )     
+    ########################################################################
+    
     chrom_assay <- CreateChromatinAssay(
         counts = atac_count,
         sep = c(":", "-"),
