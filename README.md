@@ -28,13 +28,13 @@ This tool is designed for inferring the chromatin interaction strength and devel
     Signac: 1.9.0
     Cicero: 1.16.1
     Monocle: 2.24.0
-    bigWigAverageOverBed: downloaded from UCSC Genome Browser
+    bigWigAverageOverBed: downloaded from the UCSC Genome Browser
     
 </br>
     
 # Usage:
 
-## GLS：
+## Calculate GLS：
 
     # Input: peak-count matrix
 
@@ -77,7 +77,7 @@ This tool is designed for inferring the chromatin interaction strength and devel
     
     #"conns" stores the GLS of all peak-pairs.
 
-## LLS：   
+## Calculate LLS：   
 
     AGG=inferc.aggMat(DATA, UMAP, clstNum=1000,seed=123)
     conns_uniq=inferloop.getUniqLoop(conns)
@@ -117,12 +117,42 @@ This tool is designed for inferring the chromatin interaction strength and devel
     inferc.drawContact(s3_draw)
     inferc.addV4C(s3_draw)
 
-## Developmental score:
+## Calculate developmental score:
 
-## Developmental directions:
-
-
+#### Step 1, Linux shell:
     
+    PHYLOP='hg19.100way.phyloP100way.bw' # downloaded from the UCSC Genome Browser
+    BED='ALL_PEAK.bed'
+    bwAve='./src/bigWigAverageOverBed'
+    addID='./src/addID.py'
+   
+    python $addID $BED $BED\.withID.bed
+    $bwAve $PHYLOP $BED\.withID.bed $BED\.hg19.phyloP100way.txt
+
+#### Step 2, R:
+
+    library(Seurat)
+    library(Signac)
+    library(Signac)
+    source('InferC.R')
+    
+    DATA=seurat_object[['peaks']]@data
+    UMAP=seurat_object@reductions$umap@cell.embeddings
+    conns=readRDS('conns.rds') #from "GLS"
+    PHYLOP=read.table('ALL_PEAK.bed.hg19.phyloP100way.txt',sep='\t')
+    AGG=inferc.aggMat(DATA, UMAP, clstNum=1000,seed=123)
+    MAT=AGG$agg
+    
+    devScore=inferc.calDevScore(conns, MAT, PHYLOP)
+    devScore_cell=devScore[AGG$clst]
+    
+
+## Draw developmental directions on UMAP:
+
+   DS=devScore_cell
+   COL=inferc.colMap(DS,c(min(DS),median(DS),max(DS)),c('blue','grey90','red'))
+   FIELD=inferc.field(DP=DS, VEC=UMAP, SHOW=TRUE,N=11,P=0.9,AL=0.5,CUT=0,CEX=0.3,COL=COL)
+
 </br>
 
 # Benchmark datasets:
