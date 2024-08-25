@@ -171,9 +171,9 @@ This tool is designed for inferring the chromatin interaction strength and devel
 
 ## Draw developmental directions on UMAP:
 
-   DS=devScore_cell
-   COL=inferc.colMap(DS,c(min(DS),median(DS),max(DS)),c('blue','grey90','red'))
-   FIELD=inferc.field(DP=DS, VEC=UMAP, SHOW=TRUE,N=11,P=0.9,AL=0.5,CUT=0,CEX=0.3,COL=COL)
+    DS=devScore_cell
+    COL=inferc.colMap(DS,c(min(DS),median(DS),max(DS)),c('blue','grey90','red'))
+    FIELD=inferc.field(DP=DS, VEC=UMAP, SHOW=TRUE,N=11,P=0.9,AL=0.5,CUT=0,CEX=0.3,COL=COL)
 
 </br>
 
