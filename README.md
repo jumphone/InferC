@@ -4,7 +4,7 @@
 
 **Paper Link:** coming soon
 
-This tool is designed for inferring the chromatin interaction strength and developmental potential of cells using scATAC-seq data
+This tool is designed for inferring chromatin interaction strength and developmental potential of cells using scATAC-seq data
 
 # Updates:
 
