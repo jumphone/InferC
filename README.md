@@ -17,7 +17,7 @@ This tool is designed for inferring chromatin interaction strength and developme
 
 * [Requirements](#requirements)
 * [Usage](#usage)
-* [Benchmark Datasets](#benchmark-datasets)
+* [Datasets](#datasets)
 
 </br>
 
@@ -177,7 +177,7 @@ This tool is designed for inferring chromatin interaction strength and developme
 
 </br>
 
-# Benchmark datasets:
+# Datasets:
 
 **Raw data**: please check **Supplementary Table 1** in our paper
 
