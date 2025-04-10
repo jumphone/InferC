@@ -2,8 +2,6 @@
 
 **InferC: inferring chromatin structure and developmental potential using single-cell chromatin accessibility**
 
-**Paper Link:** coming soon
-
 This tool is designed for inferring chromatin interaction strength and developmental potential of cells using scATAC-seq data
 
 # Updates:
